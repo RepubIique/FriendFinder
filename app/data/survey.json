@@ -1,0 +1,42 @@
+[
+  {
+    "question": "How difficult was your childhood?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How would you rate the Wolf Of Wallstreet",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How well can you sing?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How much wool would the wood chuck chuck if a wood chuck could chuck wood?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How much do you like ice-cream?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How right are flat-earthers?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How much money would you spend on commodities?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How good am I coming up with these questions??",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How bored are you?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "question": "How good of a person do you think you are ?",
+    "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  }
+]
