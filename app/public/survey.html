@@ -70,5 +70,9 @@
       userScore.push(userAns);
       console.log(userScore);
     });
+    let postBody = { userscore: userScore };
+    $.post("http://localhost:8080/api/friends", postBody, function(res) {
+      console.log(res);
+    });
   });
 </script>
