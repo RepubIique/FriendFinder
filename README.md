@@ -7,3 +7,7 @@ The Goal of the app is to find people who has the score closes you to and they w
 # To Start
 
 npm install to install all the dependencies
+
+# Whats next ?
+
+Deploy to Heroku
