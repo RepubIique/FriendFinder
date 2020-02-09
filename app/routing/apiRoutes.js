@@ -20,26 +20,38 @@ module.exports = function(app) {
       const { userscore } = req.body;
       console.log("Req: ", userscore);
       if (userscore) {
-        /* Do calculation once done send it back, replace userscore with the id  */
-        res.status(200).send(userscore);
+        let bestMatch = findFriend(userscore);
+        console.log("bestMatch", bestMatch);
+        res.status(200).send(bestMatch);
       } else {
         res.status(500).send("Error");
       }
     });
 
-    findFriend = user => {
+    findFriend = userScore => {
+      let totalScoreArray = [];
+      let totalArray = [];
+      // Loops thru friends.json
       for (let x = 0; x < fData.length; x++) {
-        for (let i = 0; i < fData[x].scores.length; i++) {
-          let totalArray = [];
-          let totalScore = 0;
-          if (fData[x].scores[i] <= user.scores[i]) {
-            totalScore += user.scores[i] - fData[i].scores[i];
-          } else {
-            totalScore += fData[x].scores[i] - user.scores[i];
-          }
-          totalArray.push(totalScore);
+        let friendScores = fData[x].scores;
+        let totalScore = 0;
+        // Loops thru friendScore and userScore
+        for (let i = 0; i < userScore.length; i++) {
+          let score = parseInt(userScore[i]);
+          totalScore += Math.abs(friendScores[i] - parseInt(score));
         }
+        console.log(
+          `Compatibility Score for ${fData[x].name} and User is ${totalScore}`
+        );
+        totalScoreArray.push(totalScore);
       }
+
+      let bestFriendIndex = totalScoreArray.indexOf(
+        Math.min(...totalScoreArray)
+      );
+      console.log(`Best match : ${fData[bestFriendIndex].name}`);
+
+      return fData[bestFriendIndex];
     };
   });
 };

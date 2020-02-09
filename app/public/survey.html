@@ -7,15 +7,12 @@
     <title>Friend Finder</title>
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.js"
-      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <script>
       $(function() {
         $.getJSON("./../data/survey.json", function(data) {
@@ -52,12 +49,46 @@
     <div class="container">
       <form class="questions"></form>
       <button
+        data-toggle="modal"
+        data-target="#myModal"
         id="surveySubmit"
         class="btn btn-dark"
         style="margin-bottom: 30px;"
       >
         Submit!
       </button>
+    </div>
+
+    <!--  Modal -->
+    <div class="container">
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Behold, your new best friends</h4>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body"></div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
@@ -68,11 +99,14 @@
     $(".form-control").each(function() {
       let userAns = $(this).val();
       userScore.push(userAns);
-      console.log(userScore);
     });
     let postBody = { userscore: userScore };
     $.post("http://localhost:8080/api/friends", postBody, function(res) {
       console.log(res);
+      $(".modal-body").html(`
+      <p>Your new best friend is ${res.name}</p>
+      <img src=${res.photo} style="width: 500px; height: 500px;"/>
+      `);
     });
   });
 </script>
