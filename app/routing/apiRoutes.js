@@ -9,15 +9,22 @@ module.exports = function(app) {
     let friends = data.toString();
     let friendsData = JSON.parse(friends);
 
+    app.get("/data/survey.json", function(req, res) {
+      res.sendFile(path.join(__dirname, "/../data/survey.json"));
+    });
+
     app.get("/api/friends", function(req, res) {
       res.json(friendsData);
     });
-    for (let x = 0; x < friendsData.length; x++) {
-      for (let i = 0; i < friendsData[x].scores.length; i++) {}
-    }
-  });
+    // app.post("/api/friends", function(req, res) {
+    //   res.send(newUser);
+    // });
 
-  app.get("/", function(req, res) {
-    res.send("Hello World");
+    findFriend = user => {
+      for (let x = 0; x < friendsData.length; x++) {
+        for (let i = 0; i < friendsData[x].scores.length; i++) {}
+      }
+    };
+    8;
   });
 };

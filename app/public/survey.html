@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Friend Finder</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function() {
+        $.getJSON("./../data/survey.json", function(data) {
+          for (let i = 0; i < data.length; i++) {
+            $(".questions").append(`
+        <div class="form-group" id="q${i + 1}">
+                <label>${data[i].question}</label>
+            <select class="form-control">
+                <option id=a1>1</option>
+                <option id=a2>2</option>
+                <option id=a3>3</option>
+                <option id=a4>4</option>
+                <option id=a5>5</option>
+                <option id=a6>6</option>
+                <option id=a7>7</option>
+                <option id=a8>8</option>
+                <option id=a9>9</option>
+                <option id=a10>10</option>
+            </select>
+        </div>
+        `);
+          }
+        });
+      });
+    </script>
+  </head>
+  <style>
+    .container {
+      background-color: white;
+    }
+  </style>
+
+  <body background="./assets/background.jpeg">
+    <div class="container">
+      <form class="questions"></form>
+      <button
+        id="surveySubmit"
+        class="btn btn-dark"
+        style="margin-bottom: 30px;"
+      >
+        Submit!
+      </button>
+    </div>
+  </body>
+</html>
+
+<script>
+  $("#surveySubmit").on("click", function() {
+    let userScore = [];
+    $(".form-control").each(function() {
+      let userAns = $(this).val();
+      userScore.push(userAns);
+      console.log(userScore);
+    });
+  });
+</script>
